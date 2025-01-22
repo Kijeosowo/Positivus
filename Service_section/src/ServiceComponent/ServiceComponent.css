@@ -1,0 +1,88 @@
+/* STYLING THE DETAILS */
+
+details {
+    background: #f3f3f3;
+    padding: 1.5rem;
+    border-radius: 20px;
+    outline: 1px solid black;
+    border-bottom: 5px solid black;
+}
+
+details summary {
+    cursor: pointer;
+    position: relative;
+    list-style-type: none;
+    display: flex;
+    /* Use flexbox for better alignment */
+    align-items: center;
+    gap: 0.5rem;
+    /* Space between items */
+}
+
+summary::after {
+    content: '+';
+    font-size: 1.5rem;
+    margin-inline-start: auto;
+    /* Push to the far right */
+    background: #f3f3f3;
+    outline: 1px solid black;
+    border-radius: 150px;
+    /* Creates a circular shape */
+    display: inline-block;
+    width: 1.5rem;
+    height: 1.5rem;
+    text-align: center;
+    line-height: 1.5rem;
+
+}
+
+details[open] summary::after {
+    content: '-';
+
+}
+
+details summary>* {
+    display: inline;
+}
+
+details summary .details-id {
+    margin-inline-end: 1rem;
+    font-size: 2rem;
+}
+
+details>*:not(summary) {
+    font-size: 0.7em;
+    margin-block-start: 1rem;
+}
+
+details[open] {
+    background: #b9ff66;
+}
+
+details::details-content {
+    position: relative;
+    block-size: 0;
+    overflow: hidden;
+    transition: 
+    block-size 1s,
+    content-visibility 1s;
+    transition-behavior: allow-discrete;
+}
+
+
+details[open]::details-content {
+    block-size: auto;
+}
+
+details::details-content::before {
+    content: '';
+    width: 100%;
+    height: 1px;
+    background: black;
+    position: absolute;
+    top: -12px;
+}
+
+.details-container {
+    margin-bottom: 1rem;
+}
